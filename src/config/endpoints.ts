@@ -7,9 +7,7 @@ const ENDPOINTS = {
         google: () => 'oauth/google'
     },
     user: {
-        checkEmail: () => `user/email-check`,
-        profileQuestions: (stepNumber: number) =>
-            `admin/user-profile/questions?step_number=${stepNumber}`,
+        checkEmail: () => `users/email-check`,
         me: () => `users/me`,
     },
     socket: {

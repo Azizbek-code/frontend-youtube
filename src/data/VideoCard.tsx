@@ -56,3 +56,59 @@ export const data = [
     },
   },
 ];
+
+export interface Author {
+  id: string;
+  firstName: string;
+  lastName: string;
+  username: string | null;
+  email: string;
+  phone: string | null;
+  avatar: string | null;
+  channelBanner: string | null;
+  channelDescription: string | null;
+  role: 'SUPERADMIN' | 'USER';
+  isBlocked: boolean;
+  is_email_verified: boolean;
+  is_phone_verified: boolean;
+  subscribersCount: number;
+  totalViews: string; 
+  createdAt: string;  
+  updatedAt: string;  
+}
+export interface VideoWithAuthor {
+  id: string;
+  title: string;
+  description: string | null;
+  videoUrl: string;
+  thumbnail: string | null;
+  duration: string; 
+  status: 'PROCESSING' | 'PUBLISHED' | 'DELETED';
+  visibility: 'PUBLIC' | 'PRIVATE' | 'UNLISTED';
+  likesCount: number;
+  dislikesCount: number;
+  commentsCount: number;
+  viewsCount: string; 
+  createdAt: string;
+  updatedAt: string;
+
+  author: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    username: string | null;
+    email: string;
+    phone: string | null;
+    avatar: string | null;
+    channelBanner: string | null;
+    channelDescription: string | null;
+    role: 'SUPERADMIN' | 'USER';
+    isBlocked: boolean;
+    is_email_verified: boolean;
+    is_phone_verified: boolean;
+    subscribersCount: number;
+    totalViews: string; 
+    createdAt: string;
+    updatedAt: string;
+  };
+}

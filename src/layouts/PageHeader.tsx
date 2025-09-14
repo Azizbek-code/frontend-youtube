@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../config/axios";
 import ENDPOINTS from "../config/endpoints";
+import { handleGoogleLogin } from "../utils/oatuhFunction";
 
 export const defaultIconStyle = "text-2xl";
 
@@ -45,12 +46,12 @@ const PageHeader = () => {
   const { data, isError } = useQuery({
     queryKey: ["me"],
     queryFn: async () => {
-      const res = await api.get(ENDPOINTS.user.me())
-      return res.data
+      const res = await api.get(ENDPOINTS.user.me());
+      console.log(res);
+      return res;
     },
   });
-  console.log(isError);
-  
+  console.log(data?.data?.picture);
 
   const navigate = useNavigate();
   const [showSearchInput, setSerchInput] = useState(false);
@@ -178,17 +179,35 @@ const PageHeader = () => {
         >
           <IoIosNotifications className={defaultIconStyle} />
         </Button>
-        {!isError ? <Button
-          variant={"default"}
-          size={"default"}
-          className="flex gap-2 items-center !h-8 rounded-[16px] mt-2 text-[16px]"
-          onClick={() => navigate("/sign-in")}
-        >
-          <RxAvatar />
-          Sign In
-        </Button> : <Button variant={"default"} size={"icon"} className="text-lg" onClick={() => navigate('/profile')}>
-          {!data.avatar ? <img src={data.avatar}/> : <RxAvatar/>}
-        </Button>}
+        {isError ? (
+          <Button
+            variant="default"
+            size="default"
+            className="flex gap-2 items-center !h-8 rounded-[16px] mt-2 text-[16px]"
+            onClick={() => handleGoogleLogin()}
+          >
+            <RxAvatar />
+            Sign In
+          </Button>
+        ) : (
+          <Button
+            variant="default"
+            size="icon"
+            className="!p-0 !h-8 w-8 rounded-full overflow-hidden"
+            onClick={() => navigate("/profile")}
+          >
+            {data?.data?.data.picture ? (
+              <img
+                src={data.data.data.picture}
+                alt="Profile"
+                  className="h-full w-full object-cover"
+                  onClick={() => navigate('/profile')}
+              />
+            ) : (
+              <RxAvatar className="h-6 w-6" />
+            )}
+          </Button>
+        )}
       </div>
     </div>
   );

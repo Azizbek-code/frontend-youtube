@@ -11,7 +11,8 @@ const HomePage = () => {
 
         <div className="overflow-x-hidden px-8 pb-4">
           <div className="sticky top-0 bg-white z-10 pb-4">
-            <Category
+          <Category
+            type="Home"
               onSelect={setSelectedCategory}
               selectedCtegory={selectedCategory}
             />
@@ -20,6 +21,7 @@ const HomePage = () => {
           <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 pt-4">
             {data.map((items) => (
               <VideoCards
+                cardType="Home"
                 key={items.id}
                 createdAt={items.createdAt}
                 duration={items.duration}
@@ -29,6 +31,7 @@ const HomePage = () => {
                 videoUrl={items.videoUrl}
                 viewsCount={items.viewsCount}
                 thumbnail={items.thumbnail}
+                className="flex-col"
               />
             ))}
           </div>

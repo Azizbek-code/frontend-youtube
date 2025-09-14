@@ -4,8 +4,9 @@ import { BsCollectionPlay } from "react-icons/bs";
 import { FiHeart, FiSettings } from "react-icons/fi";
 import { HiOutlineClock } from "react-icons/hi";
 import { IoMdVideocam } from "react-icons/io";
-import { MdExplore, MdSubscriptions } from "react-icons/md";
+import { MdSubscriptions } from "react-icons/md";
 import { RiVideoLine } from "react-icons/ri";
+import { SiYoutubeshorts } from "react-icons/si";
 
 interface DataProps {
   id: string;
@@ -16,7 +17,7 @@ interface DataProps {
 
 export const sidebarItems: DataProps[] = [
   { id: "s-1", label: "Home", icon: AiFillHome, route: "/" },
-  { id: "s-2", label: "Explore", icon: MdExplore, route: "/explore" },
+  { id: "s-2", label: "Shorts", icon: SiYoutubeshorts, route: "/shorts" },
   {
     id: "s-3",
     label: "Subscriptions",
