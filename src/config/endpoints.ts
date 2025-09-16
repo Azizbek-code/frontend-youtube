@@ -10,6 +10,11 @@ const ENDPOINTS = {
         checkEmail: () => `users/email-check`,
         me: () => `users/me`,
     },
+    video: {
+        getOneVideos: (id: string) => `videos/${id}`,
+        getAllVideos: () => `videos/all/video`
+
+    },
     socket: {
         chat: () => `/chat`,
     },

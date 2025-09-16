@@ -43,6 +43,9 @@ const VideoCards = ({
       const response = await api.get("/videos");
       return response.data;
     },
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    staleTime: 1000 * 60,
   });
   console.log(data);
   const [isVideoPlaying, setVideoPlaying] = useState(false);

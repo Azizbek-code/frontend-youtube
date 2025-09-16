@@ -48,10 +48,14 @@ const PageHeader = () => {
     queryFn: async () => {
       const res = await api.get(ENDPOINTS.user.me());
       console.log(res);
-      return res;
+      return res.data;
     },
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    staleTime: 1000 * 60,
   });
-  console.log(data?.data?.picture);
+
+  
 
   const navigate = useNavigate();
   const [showSearchInput, setSerchInput] = useState(false);
@@ -90,7 +94,8 @@ const PageHeader = () => {
     recognition.start();
     recognitionRef.current = recognition;
   };
-  console.log(searchValue);
+  console.log(data?.data.picture);
+  
 
   return (
     <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
@@ -196,9 +201,9 @@ const PageHeader = () => {
             className="!p-0 !h-8 w-8 rounded-full overflow-hidden"
             onClick={() => navigate("/profile")}
           >
-            {data?.data?.data.picture ? (
+            {data?.data.picture ? (
               <img
-                src={data.data.data.picture}
+                src={data.data.picture}
                 alt="Profile"
                   className="h-full w-full object-cover"
                   onClick={() => navigate('/profile')}

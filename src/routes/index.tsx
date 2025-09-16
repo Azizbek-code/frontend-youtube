@@ -4,6 +4,7 @@ import RootLayout from "../layouts/RootLayout";
 import HomePage from "../pages/HomePage";
 import WatchVideo from "../components/WatchVideo";
 import UploadVide from "../components/uploadVideo";
+import ShortsPage from "../pages/ShortsPage";
 
 export const route = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const route = createBrowserRouter([
             path: "watch", 
             element: <WatchVideo />,
           },
+          {
+            path: "shorts",
+            element:<ShortsPage/>
+          }
         ],
         
       },
