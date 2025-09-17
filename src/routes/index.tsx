@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import WatchVideo from "../components/WatchVideo";
 import UploadVide from "../components/uploadVideo";
 import ShortsPage from "../pages/ShortsPage";
+import ProfilePage from "../pages/ProfilePage";
 
 export const route = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const route = createBrowserRouter([
           {
             path: "shorts",
             element:<ShortsPage/>
+          },
+          {
+            path: "profile",
+            element: <ProfilePage/>
           }
         ],
         
